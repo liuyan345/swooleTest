@@ -11,6 +11,7 @@ class Hello extends Controller
         $this->response()->write('Hello easySwoole!');
     }
     public function test(){
+        $n = new N();
         $this->response()->write('this page is test!');
     }
 
