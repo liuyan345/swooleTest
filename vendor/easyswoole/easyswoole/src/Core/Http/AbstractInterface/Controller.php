@@ -39,12 +39,13 @@ abstract class Controller
 
     protected function actionNotFound($action):void
     {
-        $this->response()->withStatus(Status::CODE_NOT_FOUND);
+        $this->response()->write('this page not found!');
+//        $this->response()->withStatus(Status::CODE_NOT_FOUND);
     }
 
     protected function afterAction($actionName):void
     {
-        $this->response()->write('after');
+
     }
 
     protected function onException(\Throwable $throwable,$actionName):void
