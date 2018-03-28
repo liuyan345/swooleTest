@@ -44,7 +44,7 @@ abstract class Controller
 
     protected function afterAction($actionName):void
     {
-        echo 111;
+        $this->response()->write('after');
     }
 
     protected function onException(\Throwable $throwable,$actionName):void
