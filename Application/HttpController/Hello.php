@@ -14,14 +14,7 @@ class Hello extends Controller
         $this->response()->write('this page is test!');
     }
 
-    public function actionNotFound($action){
-        $this->response()->write('this action not exsie!');
-    }
 
-    public function onRequest($action){
-        $this->response()->write('sssssssssssssssss!');
-        return true;
-    }
 
 }
 
