@@ -6,12 +6,22 @@ use EasySwoole\Core\Http\AbstractInterface\Controller;
 
 class Hello extends Controller
 {
-    function index()
+    public function index()
     {
         $this->response()->write('Hello easySwoole!');
     }
-    function test(){
+    public function test(){
         $this->response()->write('this page is test!');
     }
+
+    public function actionNotFound($action){
+        $this->response()->write('this action not exsie!');
+    }
+
+    public function onRequest($action){
+        $this->response()->write('sssssssssssssssss!');
+        return true;
+    }
+
 }
 
