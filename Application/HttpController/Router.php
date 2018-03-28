@@ -24,8 +24,8 @@ class Router extends \EasySwoole\Core\Http\AbstractInterface\Router
             $response->end();
         });
         // /test/index.html
-        $routeCollector->get('/test/{name}',function (Request $request ,Response $response){
-            $response->write('this router '.$name);
+        $routeCollector->get('/test/{name}',function (Request $request ,Response $response,$name){
+            $response->write("this router ".$name);
             $response->end();
         });
         // /user/1/index.html
