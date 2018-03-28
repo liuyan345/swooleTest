@@ -10,5 +10,8 @@ class Hello extends Controller
     {
         $this->response()->write('Hello easySwoole!');
     }
+    function test(){
+        $this->response()->write('this page is test!');
+    }
 }
 
