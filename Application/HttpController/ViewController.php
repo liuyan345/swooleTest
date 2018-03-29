@@ -2,7 +2,9 @@
 
 namespace App\HttpController;
 
-abstract class ViewController extends AbstractController{
+use EasySwoole\Core\Http\AbstractInterface\Controller;
+
+abstract class ViewController extends Controller{
 
     protected $TemplateViews = ROOT . '/Templates/';
     protected $TemplateCache = ROOT . '/Temp/TplCache';
