@@ -10,7 +10,7 @@ class Index extends Controller
 {
     public function index()
     {
-        $this->render('index');
+//        $this->render('index');
 //        $this->response()->write('Hello easySwoole!!');
     }
     public function test(){
@@ -18,9 +18,9 @@ class Index extends Controller
         $this->response()->write('this is test route!');
     }
 
-    protected function afterAction($action){
-
-    }
+//    protected function afterAction($action){
+//
+//    }
 
 
 
