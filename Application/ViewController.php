@@ -1,5 +1,5 @@
 <?php
-namespace App\HttpController;
+namespace App;
 
 use EasySwoole\Core\Component\Di;
 use EasySwoole\Core\Component\SysConst;
