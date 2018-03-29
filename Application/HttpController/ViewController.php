@@ -3,9 +3,8 @@
 namespace App\HttpController;
 
 use EasySwoole\Core\Http\AbstractInterface\Controller;
-use Illuminate\Support\Facades\Blade;
-
-//use Jenssegers\Blade\Blade;
+//use Illuminate\Support\Facades\Blade;
+use Jenssegers\Blade\Blade;
 
 abstract class ViewController extends Controller{
 
