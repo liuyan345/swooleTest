@@ -17,7 +17,7 @@ class Index extends Controller
         $this->response()->write('this is test route!');
     }
 
-    function afterAction($action){
+    protected function afterAction($action){
         echo 1111;
     }
 
