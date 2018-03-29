@@ -14,11 +14,12 @@ class Index extends Controller
 //        $this->response()->write('Hello easySwoole!!');
     }
     public function test(){
+        echo 111;
         $this->response()->write('this is test route!');
     }
 
     protected function afterAction($action){
-        echo 1111;
+
     }
 
 
