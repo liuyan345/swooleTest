@@ -8,7 +8,9 @@
 
 namespace EasySwoole;
 
+use App\Parser;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
+use EasySwoole\Core\Swoole\EventHelper;
 use \EasySwoole\Core\Swoole\ServerManager;
 use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
@@ -25,6 +27,7 @@ Class EasySwooleEvent implements EventInterface {
     public function mainServerCreate(ServerManager $server,EventRegister $register): void
     {
         // TODO: Implement mainServerCreate() method.
+        EventHelper::registerDefaultOnMessage($register,new Parser());
     }
 
     public function onRequest(Request $request,Response $response): void
