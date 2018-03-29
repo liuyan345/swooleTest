@@ -17,11 +17,15 @@ class Index extends Controller
         $this->response()->write('this is test route!');
     }
 
-    protected function afterAction($action){
-        $this->response()->write('this is test aaa!');
+    protected function actionNotFound($action): void
+    {
+        $this->response()->write('actionNotFound!');
     }
 
-
+    protected function afterAction($action): void
+    {
+        $this->response()->write('afterAction!');
+    }
 
 }
 
