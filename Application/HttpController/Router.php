@@ -28,11 +28,11 @@ class Router extends \EasySwoole\Core\Http\AbstractInterface\Router
 //            $response->write("this router ".$name);
 //            $response->end();
 //        });
-        // /user/1/index.html
-        $routeCollector->get( '/user/{id:\d+}',function (Request $request ,Response $response,$id){
-            $response->write("this is router user ,your id is {$id}");
-            $response->end();
-        });
+//        // /user/1/index.html
+//        $routeCollector->get( '/user/{id:\d+}',function (Request $request ,Response $response,$id){
+//            $response->write("this is router user ,your id is {$id}");
+//            $response->end();
+//        });
 
         $routeCollector->addRoute('GET', '/test', '/Index/test');
 
