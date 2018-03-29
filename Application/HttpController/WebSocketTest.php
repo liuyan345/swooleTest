@@ -11,7 +11,7 @@ class WebSocketTest extends Controller
     function index()
     {
         // TODO: Implement index() method.
-        $content = file_get_contents(EASYSWOOLE_ROOT.'/Views/test.html');
+        $content = file_get_contents(__DIR__.'/test.html');
         $this->response()->write($content);
     }
 
