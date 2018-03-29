@@ -28,6 +28,7 @@ abstract class ViewController extends Controller
     function __construct( $actionName, Request $request, Response $response)
     {
         $tempPath   = Di::getInstance()->get(SysConst::DIR_TEMP);    # 临时文件目录
+        var_dump($tempPath);die;
         $this->view = new BladeInstance(EASYSWOOLE_ROOT . '/Views', "{$tempPath}/templates_c");
 
         parent::__construct($actionName, $request, $response);

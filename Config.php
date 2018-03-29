@@ -18,7 +18,7 @@ return [
             'task_max_request'=>10,
             'max_request'=>5000,//强烈建议设置此配置项
             'worker_num'=>8,
-            'document_root'=>EASYSWOOLE_ROOT.'/Views',
+            'document_root'=>EASYSWOOLE_ROOT.'/Public',
             'enable_static_handler'=>true,
 
         ],
