@@ -13,6 +13,7 @@ class Index extends ViewController
     protected $view;
     public function index()
     {
+        echo 1111;die;
         $tempPath   = Di::getInstance()->get(SysConst::DIR_TEMP);    # 临时文件目录
         $this->view = new BladeInstance(EASYSWOOLE_ROOT . '/Views', "{$tempPath}/templates_c");
         $content = $this->view->render("Index/index",['name'=>"easySwoole"]);
