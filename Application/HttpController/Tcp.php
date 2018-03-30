@@ -11,8 +11,8 @@ class Tcp extends Controller
     function index()
     {
         // TODO: Implement index() method.
-//        $this->actionNotFound(null);
-        $this->response()->write('this page is'.$this->getActionName());
+        $this->actionNotFound(null);
+//        $this->response()->write('this page is'.$this->getActionName());
     }
 
     /*
@@ -21,14 +21,14 @@ class Tcp extends Controller
      */
     function push()
     {
-        $this->response()->write('this page is push!');
-//        $fd = intval($this->request()->getRequestParam('fd'));
-//        $info = ServerManager::getInstance()->getServer()->connection_info($fd);
-//        if(is_array($info)){
-//            ServerManager::getInstance()->getServer()->send($fd,'push in http at '.time());
-//        }else{
-//            $this->response()->write("fd {$fd} not exist");
-//        }
+//        $this->response()->write('this page is push!');
+        $fd = intval($this->request()->getRequestParam('fd'));
+        $info = ServerManager::getInstance()->getServer()->connection_info($fd);
+        if(is_array($info)){
+            ServerManager::getInstance()->getServer()->send($fd,'push in http at '.time());
+        }else{
+            $this->response()->write("fd {$fd} not exist");
+        }
     }
 }
 
