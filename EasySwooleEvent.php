@@ -31,6 +31,7 @@ Class EasySwooleEvent implements EventInterface {
 //        EventHelper::registerDefaultOnMessage($register,new Parser());
         $tcp = $server->addServer('tcp',9502);
         EventHelper::registerDefaultOnReceive($register,new \Tcp\Parser(),function($errorType,$clientData,$client){
+            ServerManager::getInstance()->start();
             //第二个回调是可有可无的，当无法正确解析，或者是解析出来的控制器不在的时候会调用
             TaskManager::async(function ()use($client){
                 sleep(3);
