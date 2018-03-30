@@ -11,6 +11,7 @@ class Tcp extends Controller{
     }
 
     function push(){
+        echo 1;die;
         $fd = intval($this->request()->getRequestParam('fd'));
         $info = ServerManager::getInstance()->getServer()->connection_info($fd);
         if(is_array($info)){
