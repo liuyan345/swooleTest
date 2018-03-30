@@ -14,9 +14,9 @@ class Tcp extends Controller
         // TODO: Implement index() method.
 //        $this->actionNotFound(null);
 //        $this->response()->write('this page is'.$this->getActionName());
-        $test = new Test();
-        $abc = $test->who();
-        $this->response()->write($abc);
+//        $test = new Test();
+//        $abc = $test->who();
+//        $this->response()->write($abc);
     }
 
     /*
@@ -25,7 +25,6 @@ class Tcp extends Controller
      */
     function push()
     {
-//        $this->response()->write('this page is push!');
         $fd = intval($this->request()->getRequestParam('fd'));
         $info = ServerManager::getInstance()->getServer()->connection_info($fd);
         if(is_array($info)){
