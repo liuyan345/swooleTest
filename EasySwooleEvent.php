@@ -15,7 +15,7 @@ use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
 use \EasySwoole\Core\Http\Response;
 use EasySwoole\Core\Swoole\Task\TaskManager;
-use Tcp\Parser;
+//use Tcp\Parser;
 
 Class EasySwooleEvent implements EventInterface {
 
@@ -29,14 +29,15 @@ Class EasySwooleEvent implements EventInterface {
     {
         // TODO: Implement mainServerCreate() method.
 //        EventHelper::registerDefaultOnMessage($register,new Parser());
-        $tcp = $server->addServer("tcp",9502);
-        EventHelper::registerDefaultOnReceive($register,new Parser(),null,function($errorType,$clientData,$client){
-            TaskManager::async(function() use($client){
+        $tcp = $server->addServer('tcp',9502);
+        EventHelper::registerDefaultOnReceive($register,new \Tcp\Parser(),function($errorType,$clientData,$client){
+            //第二个回调是可有可无的，当无法正确解析，或者是解析出来的控制器不在的时候会调用
+            TaskManager::async(function ()use($client){
                 sleep(3);
                 \EasySwoole\Core\Socket\Response::response($client,"Bye");
                 ServerManager::getInstance()->getServer()->close($client->getFd());
             });
-            return $errorType." and going to close";
+            return "{$errorType} and going to close";
         });
     }
 
