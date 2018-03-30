@@ -7,6 +7,7 @@ use EasySwoole\Core\Socket\Common\CommandBean;
 
 class Parser implements ParserInterface
 {
+
     public function decode($raw, $client): ?CommandBean
     {
         // TODO: Implement decode() method.
@@ -21,14 +22,11 @@ class Parser implements ParserInterface
         return $bean;
     }
 
-    public function encode(string $raw, $client, $commandBean):?string
+    public function encode(string $raw, $client, $commandBean): ?string
     {
         // TODO: Implement encode() method.
         return $raw."\n";
-
     }
-
-
 }
 
 
