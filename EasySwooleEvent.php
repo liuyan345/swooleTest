@@ -30,7 +30,7 @@ Class EasySwooleEvent implements EventInterface {
         // TODO: Implement mainServerCreate() method.
 //        EventHelper::registerDefaultOnMessage($register,new Parser());
         $tcp = $server->addServer("tcp",9502);
-        EventHelper::registerDefaultOnReceive($register,new Parser(),function($errorType,$clientData,$client){
+        EventHelper::registerDefaultOnReceive($register,new Parser(),null,function($errorType,$clientData,$client){
             TaskManager::async(function() use($client){
                 sleep(3);
                 \EasySwoole\Core\Socket\Response::response($client,"Bye");
