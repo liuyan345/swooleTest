@@ -11,7 +11,8 @@ class Tcp extends Controller
     function index()
     {
         // TODO: Implement index() method.
-        $this->actionNotFound(null);
+//        $this->actionNotFound(null);
+        $this->response()->write('this page is'.$this->getActionName());
     }
 
     /*

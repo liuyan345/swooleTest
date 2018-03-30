@@ -4,8 +4,6 @@ namespace App\HttpController;
 
 use EasySwoole\Core\Http\AbstractInterface\Controller;
 
-use App\ViewController;
-
 class Index extends Controller
 {
     public function index()
