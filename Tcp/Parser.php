@@ -19,7 +19,7 @@ class Parser implements ParserInterface
         }
         $bean->setAction(array_shift($list));
         $bean->setArg('test',array_shift($list));
-        var_dump($bean);
+        var_dump($bean->who());
         return $bean;
     }
 
