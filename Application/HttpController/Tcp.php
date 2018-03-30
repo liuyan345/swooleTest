@@ -4,6 +4,7 @@ namespace App\HttpController;
 
 use EasySwoole\Core\Http\AbstractInterface\Controller;
 use EasySwoole\Core\Swoole\ServerManager;
+use Tcp\Test;
 
 class Tcp extends Controller
 {
@@ -11,8 +12,11 @@ class Tcp extends Controller
     function index()
     {
         // TODO: Implement index() method.
-        $this->actionNotFound(null);
+//        $this->actionNotFound(null);
 //        $this->response()->write('this page is'.$this->getActionName());
+        $test = new Test();
+        $abc = $test->who();
+        $this->response()->write($abc);
     }
 
     /*
