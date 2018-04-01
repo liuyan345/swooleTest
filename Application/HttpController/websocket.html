@@ -41,6 +41,7 @@
 
         websocket.onerror = function (evt, e) {
             console.log(e);
+            console.log(evt);
             addLine('Error occured: ' + evt.data);
         };
     };
