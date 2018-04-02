@@ -16,6 +16,8 @@ use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
 use \EasySwoole\Core\Http\Response;
 use EasySwoole\Core\Swoole\Task\TaskManager;
+use think\Db;
+
 //use Tcp\Parser;
 
 Class EasySwooleEvent implements EventInterface {
@@ -28,6 +30,10 @@ Class EasySwooleEvent implements EventInterface {
 
     public function mainServerCreate(ServerManager $server,EventRegister $register): void
     {
+        // 全局初始化数据库
+        $dbConf = Config::getInstance()->getConf('database');
+        Db::setConfig($dbConf);
+
         // TODO: Implement mainServerCreate() method.
         EventHelper::registerDefaultOnMessage($register,new Parser());
 //        $tcp = $server->addServer('tcp',9502);
