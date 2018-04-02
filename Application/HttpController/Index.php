@@ -30,7 +30,6 @@ class Index extends Controller
     {
         $fd = intval($this->request()->getRequestParam('fd'));
         $info = ServerManager::getInstance()->getServer()->connection_info($fd);
-        var_dump($info);
         if(is_array($info)){
             ServerManager::getInstance()->getServer()->push($fd,'push in http at '.time());
         }else{
