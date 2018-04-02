@@ -3,6 +3,7 @@
 namespace App\HttpController;
 
 
+use App\Models\Test;
 use EasySwoole\Core\Http\AbstractInterface\Controller;
 use EasySwoole\Core\Swoole\ServerManager;
 
@@ -12,8 +13,14 @@ class Index extends Controller
     function index()
     {
         // TODO: Implement index() method.
-        $content = file_get_contents(__DIR__.'/websocket.html');
-        $this->response()->write($content);
+//        $content = file_get_contents(__DIR__.'/websocket.html');
+//        $this->response()->write($content);
+
+        // 数据库测试
+        $test  = new Test();
+        $testInfo = $test->select();
+        var_dump($testInfo);die;
+
     }
 
     /*
