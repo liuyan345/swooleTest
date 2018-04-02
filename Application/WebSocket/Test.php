@@ -11,6 +11,8 @@ namespace App\WebSocket;
 use EasySwoole\Core\Socket\Response;
 use EasySwoole\Core\Socket\WebSocketController;
 use EasySwoole\Core\Swoole\Task\TaskManager;
+use App\Models\Test as TestModel;
+
 
 class Test extends WebSocketController
 {
@@ -22,7 +24,13 @@ class Test extends WebSocketController
     function hello()
     {
         $this->response()->write('call hello with arg:'.$this->request()->getArg('content'));
-
+    }
+    function insert(){
+        $test = new TestModel();
+        $data['test'] = $this->request()->getArg("content");
+        $id = $test->insertGetId($data);
+        $fd = $this->client()->getFd();
+        $this->response()->write("insert id is ".$id.", fd is ".$fd);
     }
 
     public function who(){

@@ -15,6 +15,7 @@
             <option value="who">who</option>
             <option value="hello">hello</option>
             <option value="delay">delay</option>
+            <option value="insert">insert</option>
             <option value="404">404</option>
         </select>
         <input type="text" id="says">
@@ -28,31 +29,18 @@
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
         websocket.onopen = function (evt) {
-            console.log(111111111111111111);
-            console.log(evt);
             addLine("Connected to WebSocket server.");
         };
 
         websocket.onclose = function (evt) {
-            console.log(222222222222222222);
-
-            console.log(evt);
-
             addLine("Disconnected");
         };
 
         websocket.onmessage = function (evt) {
-            console.log(3333333333333333333333);
-
-            console.log(evt);
-
             addLine('Retrieved data from server: ' + evt.data);
         };
 
         websocket.onerror = function (evt, e) {
-            console.log(4444444444444444444);
-            console.log(e);
-            console.log(evt);
             addLine('Error occured: ' + evt.data);
         };
     };
