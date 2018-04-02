@@ -2,27 +2,34 @@
 
 namespace App\HttpController;
 
+
 use EasySwoole\Core\Http\AbstractInterface\Controller;
+use EasySwoole\Core\Swoole\ServerManager;
 
 class Index extends Controller
 {
-    public function index()
+
+    function index()
     {
-//        $this->render('index');
-//        $this->response()->write('Hello easySwoole!!');
-    }
-    public function test(){
-        $this->response()->write('this is test route!');
+        // TODO: Implement index() method.
+        $content = file_get_contents(__DIR__.'/websocket.html');
+        $this->response()->write($content);
     }
 
-    protected function actionNotFound($action): void
+    /*
+     * 请调用who，获取fd
+     * http://ip:9501/push/index.html?fd=xxxx
+     */
+    function push()
     {
-        $this->response()->write('actionNotFound!');
-    }
-
-    protected function afterAction($action): void
-    {
-        $this->response()->write('afterAction!');
+        $fd = intval($this->request()->getRequestParam('fd'));
+        $info = ServerManager::getInstance()->getServer()->connection_info($fd);
+        var_dump($info);
+        if(is_array($info)){
+            ServerManager::getInstance()->getServer()->push($fd,'push in http at '.time());
+        }else{
+            $this->response()->write("fd {$fd} not exist");
+        }
     }
 
 }

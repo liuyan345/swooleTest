@@ -17,20 +17,16 @@ class Test extends TcpController
 
     function test()
     {
-        var_dump("aa");
         $this->response()->write(time());
     }
 
     function args()
     {
-        var_dump("bb");
-
         var_dump($this->request()->getArgs());
     }
 
     function delay()
     {
-        var_dump("cc");
         $client = $this->client();
         TaskManager::async(function ()use($client){
             sleep(1);
@@ -40,7 +36,6 @@ class Test extends TcpController
 
     function close()
     {
-        var_dump("dd");
         $this->response()->write('you are goging to close');
         $client = $this->client();
         TaskManager::async(function ()use($client){
@@ -51,7 +46,6 @@ class Test extends TcpController
 
     function who()
     {
-        var_dump($this->client()->getFd());
         $this->response()->write('you fd is '.$this->client()->getFd());
     }
 }
