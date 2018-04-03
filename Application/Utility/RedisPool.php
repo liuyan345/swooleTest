@@ -11,8 +11,8 @@ class RedisPool extends CoroutinePool
     public function __construct()
     {
         $conf = Config::getInstance()->getConf('REDIS');
-        $min = $conf['min'];
-        $max = $conf['max'];
+        $min = $conf['pool']['min'];
+        $max = $conf['pool']['max'];
         parent::__construct($min, $max);
     }
 
