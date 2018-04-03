@@ -34,8 +34,8 @@ Class EasySwooleEvent implements EventInterface {
     public function mainServerCreate(ServerManager $server,EventRegister $register): void
     {
 
-        PoolManager::getInstance()->addPool(MysqlPool2::class, 3, 10);
-        PoolManager::getInstance()->addPool(RedisPool::class, 3, 10);
+//        PoolManager::getInstance()->addPool(MysqlPool2::class, 3, 10);
+//        PoolManager::getInstance()->addPool(RedisPool::class, 3, 10);
 
         // 全局初始化数据库
         $dbConf = Config::getInstance()->getConf('database');
