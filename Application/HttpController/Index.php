@@ -19,8 +19,10 @@ class Index extends Controller
         \go(function ()use($pool){
             $db = $pool->getObj();
             if($db){
-                var_dump($db);
+//                var_dump($db);
+                $ret = $db->rawQuery('select * from sw_test');
 //                $ret = $db->rawQuery('select sleep(1)');
+                var_dump($ret);
                 $pool->freeObj($db);
                 var_dump('1 finish at '.time());
             }else{
