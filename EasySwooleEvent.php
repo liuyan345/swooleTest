@@ -10,6 +10,7 @@ namespace EasySwoole;
 
 use App\Parser;
 use App\Utility\MysqlPool2;
+use App\Utility\RedisPool;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
 use EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use EasySwoole\Core\Swoole\EventHelper;
@@ -34,6 +35,7 @@ Class EasySwooleEvent implements EventInterface {
     {
 
         PoolManager::getInstance()->addPool(MysqlPool2::class, 3, 10);
+        PoolManager::getInstance()->addPool(RedisPool::class, 3, 10);
 
         // 全局初始化数据库
         $dbConf = Config::getInstance()->getConf('database');
