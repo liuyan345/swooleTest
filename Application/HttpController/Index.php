@@ -4,6 +4,7 @@ namespace App\HttpController;
 
 
 use App\Utility\MysqlPool2;
+use App\Utility\RedisPool;
 use EasySwoole\Core\Http\AbstractInterface\Controller;
 use EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use EasySwoole\Core\Swoole\ServerManager;
@@ -13,20 +14,26 @@ class Index extends Controller
 
     function index()
     {
+    $pool = PoolManager::getInstance()->getPool(RedisPool::class);
+    $redis = $pool->getObj();
+    $abc = $redis->exec("get","abc");
+    var_dump($abc);
+    $pool->freeObj($redis);
 
-        $pool = PoolManager::getInstance()->getPool(MysqlPool2::class);
 
-//        \go(function ()use($pool){
-            $db = $pool->getObj();
-            if($db){
-                $ret = $db->rawQuery('select * from sw_test');
-//                $ret = $db->rawQuery('select sleep(1)');
-                var_dump($ret);
-                $pool->freeObj($db);
-                var_dump('1 finish at '.time());
-            }else{
-                var_dump('db not available');
-            }
+//        $pool = PoolManager::getInstance()->getPool(MysqlPool2::class);
+//
+////        \go(function ()use($pool){
+//            $db = $pool->getObj();
+//            if($db){
+//                $ret = $db->rawQuery('select * from sw_test');
+////                $ret = $db->rawQuery('select sleep(1)');
+//                var_dump($ret);
+//                $pool->freeObj($db);
+//                var_dump('1 finish at '.time());
+//            }else{
+//                var_dump('db not available');
+//            }
 //        });
 
         // TODO: Implement index() method.
