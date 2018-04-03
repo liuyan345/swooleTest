@@ -14,14 +14,13 @@ class Index extends Controller
     function index()
     {
 
-//        $pool = PoolManager::getInstance()->getPool('App\Utility\MysqlPool'); // 获取连接池对象
-//        $db = $pool->getObj();
         $pool = PoolManager::getInstance()->getPool(MysqlPool2::class);
 
         \go(function ()use($pool){
             $db = $pool->getObj();
             if($db){
-                $ret = $db->rawQuery('select sleep(1)');
+                $ret = $db->rawQuery('select * from sw_test');
+                var_dump($ret);
                 $pool->freeObj($db);
                 var_dump('1 finish at '.time());
             }else{
