@@ -18,17 +18,17 @@ class Index extends Controller
 //        $db = $pool->getObj();
         $pool = PoolManager::getInstance()->getPool(MysqlPool2::class);
 
-        $db = $pool->getObj();
-        if($db){
-            $ret = $db->rawQuery('select * from sw_test');
-            var_dump($ret);
-            $pool->freeObj($db);
+        \go(function ()use($pool){
+            $db = $pool->getObj();
+            if($db){
+                $ret = $db->rawQuery('select sleep(1)');
+                $pool->freeObj($db);
+                var_dump('1 finish at '.time());
+            }else{
+                var_dump('db not available');
+            }
+        });
 
-        }else{
-            var_dump('db not available');
-        }
-        $abc  = $db->table("sw_test")->select();
-        var_dump($abc);
         // TODO: Implement index() method.
 //        $content = file_get_contents(__DIR__.'/websocket.html');
 //        $this->response()->write($content);
