@@ -5,6 +5,7 @@ namespace App\HttpController;
 
 use App\Utility\MysqlPool2;
 use EasySwoole\Core\Http\AbstractInterface\Controller;
+use EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use EasySwoole\Core\Swoole\ServerManager;
 
 class Index extends Controller
@@ -12,9 +13,11 @@ class Index extends Controller
 
     function index()
     {
+
 //        $pool = PoolManager::getInstance()->getPool('App\Utility\MysqlPool'); // 获取连接池对象
 //        $db = $pool->getObj();
-       $pool =  new MysqlPool2();
+        $pool = PoolManager::getInstance()->getPool('App\Utility\MysqlPool2');
+
         $db = $pool->getObj();
         $abc  = $db->table("sw_test")->select();
         var_dump($abc);
