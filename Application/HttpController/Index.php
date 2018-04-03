@@ -20,7 +20,7 @@ class Index extends Controller
             $db = $pool->getObj();
             if($db){
                 var_dump($db);
-                $ret = $db->rawQuery('select sleep(1)');
+//                $ret = $db->rawQuery('select sleep(1)');
                 $pool->freeObj($db);
                 var_dump('1 finish at '.time());
             }else{
