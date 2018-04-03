@@ -16,9 +16,17 @@ class Index extends Controller
 
 //        $pool = PoolManager::getInstance()->getPool('App\Utility\MysqlPool'); // 获取连接池对象
 //        $db = $pool->getObj();
-        $pool = PoolManager::getInstance()->getPool('App\Utility\MysqlPool2');
+        $pool = PoolManager::getInstance()->getPool(MysqlPool2::class);
 
         $db = $pool->getObj();
+        if($db){
+            $ret = $db->rawQuery('select * from sw_test');
+            var_dump($ret);
+            $pool->freeObj($db);
+
+        }else{
+            var_dump('db not available');
+        }
         $abc  = $db->table("sw_test")->select();
         var_dump($abc);
         // TODO: Implement index() method.
