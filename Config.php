@@ -83,5 +83,15 @@ return [
         'datetime_format' => 'Y-m-d H:i:s',
         // 是否需要进行SQL性能分析
         'sql_explain'     => false,
+    ],
+    //链接池配置
+    'MYSQL' => [
+        'HOST' => '127.0.0.1', // 数据库地址
+        'PORT' => 3306, // 数据库端口
+        'USER' => 'liuyan', // 数据库用户名
+        'PASSWORD' => 'SCidsd!32&sd34.(&', // 数据库密码
+        'DB_NAME' => 'sw_swooleTest', // 数据库库名
+        'MIN' => 5, // 最小连接数
+        'MAX' => 100 // 最大连接数
     ]
 ];
