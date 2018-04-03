@@ -9,7 +9,9 @@
 namespace EasySwoole;
 
 use App\Parser;
+use App\Utility\MysqlPool2;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
+use EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use EasySwoole\Core\Swoole\EventHelper;
 use \EasySwoole\Core\Swoole\ServerManager;
 use \EasySwoole\Core\Swoole\EventRegister;
@@ -30,6 +32,9 @@ Class EasySwooleEvent implements EventInterface {
 
     public function mainServerCreate(ServerManager $server,EventRegister $register): void
     {
+
+        PoolManager::getInstance()->addPool(MysqlPool2::class, 3, 10);
+
         // 全局初始化数据库
         $dbConf = Config::getInstance()->getConf('database');
         Db::setConfig($dbConf);
