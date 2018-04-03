@@ -16,10 +16,9 @@ class Index extends Controller
 
         $pool = PoolManager::getInstance()->getPool(MysqlPool2::class);
 
-        \go(function ()use($pool){
+//        \go(function ()use($pool){
             $db = $pool->getObj();
             if($db){
-//                var_dump($db);
                 $ret = $db->rawQuery('select * from sw_test');
 //                $ret = $db->rawQuery('select sleep(1)');
                 var_dump($ret);
@@ -28,7 +27,7 @@ class Index extends Controller
             }else{
                 var_dump('db not available');
             }
-        });
+//        });
 
         // TODO: Implement index() method.
 //        $content = file_get_contents(__DIR__.'/websocket.html');
